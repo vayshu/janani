@@ -156,18 +156,18 @@
                   <p><i class="fa fa-exclamation-triangle fa-2x"></i></p>
                   <p>Please complete all the fields in the form before sending.</p>
                 </div>
-                <form class="form-gray-fields validate" method="post" action="php/contact.php" id="contactForm" novalidate>
+                <form class="form-gray-fields validate" method="post" action="" id="contactForm" novalidate>
                   <div class="row">
                     <div class="col-md-6 sep-top-xs">
                       <div class="form-group">
                         <label class="upper" for="name">First Name</label>
-                        <input type="text" class="form-control input-lg required" name="senderName" placeholder="Enter name" id="name" aria-required="true">
+                        <input type="text" class="form-control input-lg required" name="senderFName" placeholder="Enter name" id="name" aria-required="true">
                       </div>
                     </div>
                     <div class="col-md-6 sep-top-xs">
                       <div class="form-group">
                         <label class="upper" for="name"> Last Name</label>
-                        <input type="text" class="form-control input-lg required" name="senderName" placeholder="Enter name" id="name" aria-required="true">
+                        <input type="text" class="form-control input-lg required" name="senderLName" placeholder="Enter name" id="name" aria-required="true">
                       </div>
                     </div>
                   </div>
@@ -181,7 +181,7 @@
                     <div class="col-md-6 sep-top-xs">
                       <div class="form-group">
                         <label class="upper" for="phone"> Phone</label>
-                        <input type="text" class="form-control input-lg required" name="phone" placeholder="Enter phone" id="phone" aria-required="true">
+                        <input type="text" class="form-control input-lg required" name="senderPhone" placeholder="Enter phone" id="phone" aria-required="true">
                       </div>
                     </div>
                   </div>
@@ -189,14 +189,14 @@
                     <div class="col-md-12 sep-top-xs">
                       <div class="form-group">
                         <label class="upper" for="comment">Comment</label>
-                        <textarea class="form-control input-lg required" name="comment" rows="9" placeholder="Enter comment" id="comment" aria-required="true"></textarea>
+                        <textarea class="form-control input-lg required" name="senderComment" rows="9" placeholder="Enter comment" id="comment" aria-required="true"></textarea>
                       </div>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-md-12 sep-top-xs">
                       <div class="form-group">
-                        <button class="btn btn-primary" type="submit"><i class="fa fa-paper-plane"></i>&nbsp;Send message</button>
+                        <button id="send-email-button" class="btn btn-primary" type="submit"><i class="fa fa-paper-plane"></i>&nbsp;Send message</button>
                       </div>
                     </div>
                   </div>
@@ -412,12 +412,31 @@
       ga('send', 'pageview');
     </script>
 	
-		<script src="js/jquery.sumoselect.min.js"></script>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+
     <script type="text/javascript">
-	
-	jQuery (document).ready(function () {
-		window.asd = $('.SlectBox').SumoSelect({ csvDispCount: 3 });
-	});
+      
+      $('#contactForm').submit(function (event) {
+        event.preventDefault();
+        var $form = $(this);
+        $("#send-email-button").attr("disabled", "disabled");
+        var fname = $form.find("input[name='senderFName']").val();
+        var lname = $form.find("input[name='senderLName']").val();
+        var email = $form.find("input[name='senderEmail']").val();
+        var phone = $form.find("input[name='senderPhone']").val();
+        var comment = $form.find("textarea[name='senderComment']").val();
+
+        var request = $.post("https://whistle-experiments.herokuapp.com/web_contact", {
+          fname: fname,
+          lname: lname,
+          email: email,
+          phone: phone,
+          comment: comment
+        }, function(data) {
+          // Update UI
+          alert("Update UI");
+        });
+      });
 </script>
   </body>
 </html>
