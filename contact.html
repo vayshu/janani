@@ -213,8 +213,10 @@
         <div id="map-canvas" style="height:500px">
           <script>
             var
-              lat = -37.817921,
-              lon = 144.965076,
+              // lat = -37.817921,
+              // lon = 144.965076,
+              lat = 37.2970155,
+              lon = -121.8174109,
               infoText = [
                 '<div style="white-space:nowrap">',
                   '<h5>OTTAVIO STUDIOS</h5>',
@@ -398,6 +400,8 @@
 			</fieldset>
 		</form>
 	</div>
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
     <script src="scripts/vendor/vendor.js"></script>
     <script src="scripts/vendor/bootstrap.js"></script>
     <script src="scripts/vendor/bootstrap-extend.js"></script>
@@ -411,32 +415,31 @@
       ga('create', 'UA-38221152-28', 'auto');
       ga('send', 'pageview');
     </script>
-	
-		<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 
     <script type="text/javascript">
-      
-      $('#contactForm').submit(function (event) {
-        event.preventDefault();
-        var $form = $(this);
-        $("#send-email-button").attr("disabled", "disabled");
-        var fname = $form.find("input[name='senderFName']").val();
-        var lname = $form.find("input[name='senderLName']").val();
-        var email = $form.find("input[name='senderEmail']").val();
-        var phone = $form.find("input[name='senderPhone']").val();
-        var comment = $form.find("textarea[name='senderComment']").val();
+      jQuery(function($) {
+        $('#contactForm').submit(function(event) {
+          event.preventDefault();
+          var $form = $(this);
+          $("#send-email-button").attr("disabled", "disabled");
+          var fname = $form.find("input[name='senderFName']").val();
+          var lname = $form.find("input[name='senderLName']").val();
+          var email = $form.find("input[name='senderEmail']").val();
+          var phone = $form.find("input[name='senderPhone']").val();
+          var comment = $form.find("textarea[name='senderComment']").val();
 
-        var request = $.post("https://whistle-experiments.herokuapp.com/web_contact", {
-          fname: fname,
-          lname: lname,
-          email: email,
-          phone: phone,
-          comment: comment
-        }, function(data) {
-          // Update UI
-          alert("Update UI");
+          var request = $.post("https://whistle-experiments.herokuapp.com/web_contact", {
+            fname: fname,
+            lname: lname,
+            email: email,
+            phone: phone,
+            comment: comment
+          }, function(data) {
+            // Update UI
+            alert("Update UI");
+          });
         });
       });
-</script>
+    </script>
   </body>
 </html>
