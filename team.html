@@ -48,7 +48,7 @@
               </li> -->
               <li><a href="faq.html" title="FAQ" data-ref="pricing">FAQ</a>
               </li>
-              <li><a href="contact.html" title="Contacts" data-ref="contacts">Contacts</a>
+              <li><a href="contact.html" title="Contact Us" data-ref="contacts">Contact Us</a>
               </li>
             </ul>
             <!--<ul id="right-page-menu" role="menu" class="nav navbar-nav navbar-left">
@@ -264,7 +264,7 @@
                   <ul class="widget-post sep-top-xs main_link">
                     <li><a href="about.html">About us</a></li>
                     <li><a href="team.html">Team</a></li>
-                    <li><a href="investor.html">Investor</a></li>
+                    <li><a href="investor.html">Investors</a></li>
                     <li><a href="advisor.html">Advisors</a></li>
                  </ul>
                 </div>
@@ -275,8 +275,8 @@
                   <ul class="widget-address sep-top-xs">
                     <li><i class="fa fa-map-marker fa-lg"></i><small>10292 TERRY WAY, UNIT 2 <br>Cupertino, CA 95014</small></li>
                     <li><i class="fa fa-phone fa-lg"></i><small>(+1) 408-771-1732 <br></small></li>
-                    <li><i class="fa fa-envelope fa-lg"></i><small><a href="index.html#">support@dowhistle.com</a></small></li>
-                    <li><i class="fa fa-clock-o fa-lg"></i><small>Mon / Friday<br>09:00 - 13.00 / 14:00 - 18:00</small></li>
+                    <li><i class="fa fa-envelope fa-lg"></i><small><a href="mailto:support@dowhistle.com">support@dowhistle.com</a></small></li>
+                    <li><i class="fa fa-clock-o fa-lg"></i><small>Monday / Friday<br>09:00 - 13.00 / 14:00 - 18:00</small></li>
                   </ul>
                 </div>
               </div>
@@ -388,12 +388,16 @@
 			</fieldset>
 		</form>
 	</div>
-		<script src="js/jquery.sumoselect.min.js"></script>
+
+    <script type="text/javascript" src="js/jquery.sumoselect.min.js"></script>
     <script type="text/javascript">
-	
-	jQuery (document).ready(function () {
-		window.asd = $('.SlectBox').SumoSelect({ csvDispCount: 3 });
-	});
-</script>
-  </body>
+        jQuery(document).ready(function($) {
+            window.asd = $('.SlectBox').SumoSelect({ csvDispCount: 3 });
+
+            $('#nlEmail').on('click', function() {
+                window.alert('Email feature is not available yet. Please send your comments to support@dowhistle.com');
+            });
+        });
+    </script>
+</body>
 </html>
